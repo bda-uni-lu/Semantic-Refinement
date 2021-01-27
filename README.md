@@ -11,7 +11,7 @@
 ## TODO
 
 ### 6-Jan-2021: 
-
+1. Use OWLREADY2 (understand the existing methods) and explore DSA_04092015.owl.
 
 ### 27-Jan-2021:
 2. List out all instances.
