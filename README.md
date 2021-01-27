@@ -11,5 +11,10 @@
 ## TODO
 
 ### 6-Jan-2021: 
-### 27-Jan-2021:
 
+
+### 27-Jan-2021:
+2. List out all instances.
+3. For each instance, show which classes it belongs to.
+4. what is reasoning? How we can do reasoning?
+5. There should be a lib function which u can use for performing reasoning.
