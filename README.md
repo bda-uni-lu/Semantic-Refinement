@@ -24,3 +24,8 @@
 2. Find the lib function to do the reasoning.
 3. How how the classlist changes once you perform reasoning.
 
+### 10-Feb-2021
+1. Save the entiled axioms (after reasoning using Hermit) to a file
+2. Use that file to generate the defintion of entities again.
+
+
