@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://test.org/lu7.owl"
+         xmlns="http://test.org/lu7.owl#">
+
+<owl:Ontology rdf:about="http://test.org/lu7.owl"/>
+
+<owl:ObjectProperty rdf:about="#has_advisor">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Teachingstaff"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Student">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UNILUStudent">
+  <rdfs:subClassOf rdf:resource="#Student"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Student"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_advisor"/>
+          <owl:allValuesFrom rdf:resource="#Teachingstaff"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_advisor"/>
+          <owl:someValuesFrom rdf:resource="#Professor"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Teachingstaff">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Professor">
+  <rdfs:subClassOf rdf:resource="#Teachingstaff"/>
+  <owl:disjointWith rdf:resource="#Assistprof"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Assistprof">
+  <rdfs:subClassOf rdf:resource="#Teachingstaff"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UNILU_MS_Student">
+  <rdfs:subClassOf rdf:resource="#Student"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#UNILUStudent"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_advisor"/>
+          <owl:onClass rdf:resource="#Teachingstaff"/>
+          <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+  <owl:disjointWith rdf:resource="#UNILU_PHD_Student"/>
+</owl:Class>
+
+<owl:Class rdf:about="#tom">
+  <rdfs:subClassOf rdf:resource="#UNILU_MS_Student"/>
+  <owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UNILU_PHD_Student">
+  <rdfs:subClassOf rdf:resource="#Student"/>
+  <rdfs:subClassOf rdf:resource="#UNILUStudent"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#UNILUStudent"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_advisor"/>
+          <owl:onClass rdf:resource="#Teachingstaff"/>
+          <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_advisor"/>
+          <owl:onClass rdf:resource="#Professor"/>
+          <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#sam">
+  <rdfs:subClassOf rdf:resource="#UNILU_PHD_Student"/>
+</owl:Class>
+
+<Teachingstaff rdf:about="#bob">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Teachingstaff>
+
+<Teachingstaff rdf:about="#roy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Teachingstaff>
+
+<Teachingstaff rdf:about="#alice">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Teachingstaff>
+
+<Student rdf:about="#student1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Student>
+
+<Student rdf:about="#student2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_advisor rdf:resource="#bob"/>
+</Student>
+
+<Student rdf:about="#student3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_advisor rdf:resource="#alice"/>
+  <has_advisor rdf:resource="#roy"/>
+</Student>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#bob"/>
+    <rdf:Description rdf:about="#roy"/>
+    <rdf:Description rdf:about="#alice"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+
+</rdf:RDF>
