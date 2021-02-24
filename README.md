@@ -28,4 +28,9 @@
 1. Save the entiled axioms (after reasoning using Hermit) to a file
 2. Use that file to generate the defintion of entities again.
 
-
+### 24-Feb-2021
+1. Find out how the instances of a class changes before and after performing a reasoning step. Come up with a suitable example where you can clear show that count of instance in a class had grown after the reasoning step
+2. Create an Ontology (TBox) based on the example mentioned in the paper: https://www.w3.org/community/owled/files/2016/11/OWLED-ORE-2016_paper_10.pdf
+3. Work of possible ABox instances for the TBox
+4. Find out in which Dl the created ontology benlogs to
+5. Perform resoning and Find number of instances that fall under the catagory of SmokeDetectionEvent, TemperatureEvent, etc
