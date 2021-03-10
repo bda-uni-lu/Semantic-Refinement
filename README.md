@@ -34,3 +34,7 @@
 3. Work of possible ABox instances for the TBox
 4. Find out in which Dl the created ontology benlogs to
 5. Perform resoning and Find number of instances that fall under the catagory of SmokeDetectionEvent, TemperatureEvent, etc
+
+### 10-Mar-2021
+1. Expand the Abox of the SmokeEventOWL.owl -- included instances that belong and not belong to the Abnormal/Smoke Events
+2. Download and build the owlcpp tool (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4574266/), and look at the provided tutorials
