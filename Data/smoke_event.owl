@@ -1,1 +1,329 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/vinu.venugopal/ontologies/2021/2/untitled-ontology-4"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/vinu.venugopal/ontologies/2021/2/untitled-ontology-4">
+    <Prefix name="" IRI="http://www.semanticweb.org/vinu.venugopal/ontologies/2021/2/untitled-ontology-4"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AbnormalTemperatureEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Elevator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ElevatorAbnormalTemperatureEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Observation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ServerAbnormalTemperatureEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ServerRoom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Smoke"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SmokeDetectionEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SmokePpty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemperatureEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ValueAbove20"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ValueAbove40"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasContext"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasObservationResult"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasObservedProperty"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001er001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001er001er"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001r001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001r001y"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001r001z"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001sr001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f001sr001sr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f002er001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f002er001er"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f002sr001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#b00001f002sr001sr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#30F"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#40F"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#60F"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#70F"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AbnormalTemperatureEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#TemperatureEvent"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasObservedProperty"/>
+                <Class IRI="#Temperature"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ElevatorAbnormalTemperatureEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AbnormalTemperatureEvent"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasObservedProperty"/>
+                <Class IRI="#ValueAbove40"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ServerAbnormalTemperatureEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AbnormalTemperatureEvent"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasObservedProperty"/>
+                <Class IRI="#ValueAbove20"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SmokeDetectionEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasContext"/>
+            <Class IRI="#SmokePpty"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SmokePpty"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasObservedProperty"/>
+            <Class IRI="#Smoke"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TemperatureEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Observation"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasObservedProperty"/>
+                <Class IRI="#Temperature"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AbnormalTemperatureEvent"/>
+        <Class IRI="#TemperatureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElevatorAbnormalTemperatureEvent"/>
+        <Class IRI="#AbnormalTemperatureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElevatorAbnormalTemperatureEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasLocation"/>
+            <Class IRI="#Elevator"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElevatorAbnormalTemperatureEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasObservationResult"/>
+            <Class IRI="#ValueAbove40"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServerAbnormalTemperatureEvent"/>
+        <Class IRI="#AbnormalTemperatureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServerAbnormalTemperatureEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasObservationResult"/>
+            <Class IRI="#ValueAbove20"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ValueAbove20"/>
+        <Class IRI="#Temperature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ValueAbove40"/>
+        <Class IRI="#ValueAbove20"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Observation"/>
+        <NamedIndividual IRI="#b00001f001er001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Elevator"/>
+        <NamedIndividual IRI="#b00001f001er001er"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Smoke"/>
+        <NamedIndividual IRI="#b00001f001r001z"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Observation"/>
+        <NamedIndividual IRI="#b00001f001sr001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServerRoom"/>
+        <NamedIndividual IRI="#b00001f001sr001sr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Observation"/>
+        <NamedIndividual IRI="#b00001f002er001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Elevator"/>
+        <NamedIndividual IRI="#b00001f002er001er"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Observation"/>
+        <NamedIndividual IRI="#b00001f002sr001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServerRoom"/>
+        <NamedIndividual IRI="#b00001f002sr001sr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ValueAbove20"/>
+        <NamedIndividual IRI="#30F"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ValueAbove20"/>
+        <NamedIndividual IRI="#40F"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ValueAbove40"/>
+        <NamedIndividual IRI="#60F"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ValueAbove40"/>
+        <NamedIndividual IRI="#70F"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocation"/>
+        <NamedIndividual IRI="#b00001f001er001"/>
+        <NamedIndividual IRI="#b00001f001er001er"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObservationResult"/>
+        <NamedIndividual IRI="#b00001f001er001"/>
+        <NamedIndividual IRI="#70F"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasContext"/>
+        <NamedIndividual IRI="#b00001f001r001"/>
+        <NamedIndividual IRI="#b00001f001r001y"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObservedProperty"/>
+        <NamedIndividual IRI="#b00001f001r001y"/>
+        <NamedIndividual IRI="#b00001f001r001z"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocation"/>
+        <NamedIndividual IRI="#b00001f001sr001"/>
+        <NamedIndividual IRI="#b00001f001sr001sr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObservationResult"/>
+        <NamedIndividual IRI="#b00001f001sr001"/>
+        <NamedIndividual IRI="#30F"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocation"/>
+        <NamedIndividual IRI="#b00001f002er001"/>
+        <NamedIndividual IRI="#b00001f002er001er"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObservationResult"/>
+        <NamedIndividual IRI="#b00001f002er001"/>
+        <NamedIndividual IRI="#60F"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocation"/>
+        <NamedIndividual IRI="#b00001f002sr001"/>
+        <NamedIndividual IRI="#b00001f002sr001sr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObservationResult"/>
+        <NamedIndividual IRI="#b00001f002sr001"/>
+        <NamedIndividual IRI="#40F"/>
+    </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasObservationResult"/>
+        <ObjectProperty IRI="#hasObservedProperty"/>
+    </SubObjectPropertyOf>
+    <DatatypeDefinition>
+        <Datatype abbreviatedIRI="xsd:int"/>
+        <DatatypeRestriction>
+            <Datatype abbreviatedIRI="xsd:int"/>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">0</Literal>
+            </FacetRestriction>
+            <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+            </FacetRestriction>
+        </DatatypeRestriction>
+    </DatatypeDefinition>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 
