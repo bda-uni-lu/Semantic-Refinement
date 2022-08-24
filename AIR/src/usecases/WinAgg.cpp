@@ -25,66 +25,51 @@
  **/
 
 /*
- * ReasonAIR.cpp
+ * WinAgg.cpp
  *
- *  Created on: July 23, 2018
- *      Author: martin.theobald, vinu.venugopal
+ *  Created on: July 10, 2019
+ *      Author: vinu.venugopal
  */
 
-#include "ReasonAIR.hpp"
+#include "WinAgg.hpp"
 
 #include "../yahoo/EventCollector.hpp"
-#include "../yahoo/EventFilter.hpp"
-#include "../yahoo/Reasoner.hpp"
+#include "../yahoo_m/EventFilter_m.hpp"
 #include "../yahoo/EventGenerator.hpp"
-#include "../yahoo/OWLEventGenerator.hpp"
 #include "../yahoo/FullAggregator.hpp"
 #include "../yahoo/PartialAggregator.hpp"
 #include "../yahoo/SHJoin.hpp"
+#include "../winagg/EventSharder.hpp"
+#include "../winagg/WindowedCounter.hpp"
 
 using namespace std;
-/**
-    * We calculate the latency as the difference between the result generation timestamp for a given `time_window` and `campaign_id`
-    * pair and the event timestamp of the latest record generated that belongs to that bucket.
- **/
 
-ReasonAIR::ReasonAIR(unsigned long throughput) :
+WinAgg::WinAgg(unsigned long throughput) :
 		Dataflow() {
-	// cout<<"My new ReasonAIR CLASS"<<endl;
-	generator = new OWLEventGenerator(1, rank, worldSize, throughput); 
-	filter = new Reasoner(2, rank, worldSize);
-	
-	
-	// join = new SHJoin(3, rank, worldSize);
-	//par_aggregate = new PartialAggregator(4, rank, worldSize);
-	//full_aggregate = new FullAggregator(5, rank, worldSize);
-	//collector = new EventCollector(6, rank, worldSize);
 
-// add(generator);
-	addLink(generator, filter);
-	// addLink(filter, join);
-	//addLink(join, par_aggregate);
-	//addLink(par_aggregate, full_aggregate);
-	//addLink(full_aggregate, collector);
-	
+	generator = new EventGenerator(1, rank, worldSize, throughput);
+
+	sharder = new EventSharder(2, rank, worldSize);
+
+	win_counter = new WindowedCounter(3, rank, worldSize);
+
+	addLink(generator, sharder);
+	addLink(sharder, win_counter);
+//	addLink(win_counter, collector);
 
 	generator->initialize();
-	filter->initialize();
-	//join->initialize();
-	//par_aggregate->initialize();
-	//full_aggregate->initialize();
-	//collector->initialize();
-	
+	sharder->initialize();
+	win_counter->initialize();
+//	collector->initialize();
 
 }
 
-ReasonAIR::~ReasonAIR() {
+WinAgg::~WinAgg() {
 
 	delete generator;
-	delete filter;
-	//delete join;
-	//delete par_aggregate;
-	//delete full_aggregate;
-	//delete collector;
+	delete sharder;
+	delete win_counter;
+//	delete collector;
+
 }
 

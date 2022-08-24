@@ -25,66 +25,41 @@
  **/
 
 /*
- * ReasonAIR.cpp
+ * MapReduce.cpp
  *
- *  Created on: July 23, 2018
- *      Author: martin.theobald, vinu.venugopal
+ *  Created on: Nov 27, 2017
+ *      Author: martin.theobald, amal.tawakuli
  */
 
-#include "ReasonAIR.hpp"
+#include "MapReduce.hpp"
 
-#include "../yahoo/EventCollector.hpp"
-#include "../yahoo/EventFilter.hpp"
-#include "../yahoo/Reasoner.hpp"
-#include "../yahoo/EventGenerator.hpp"
-#include "../yahoo/OWLEventGenerator.hpp"
-#include "../yahoo/FullAggregator.hpp"
-#include "../yahoo/PartialAggregator.hpp"
-#include "../yahoo/SHJoin.hpp"
+#include "../batching/Map.hpp"
+#include "../batching/Reduce.hpp"
+#include "../connector/BinConnector.hpp"
+#include "../dataflow/Vertex.hpp"
+#include "../function/SquareFunction.hpp"
+#include "../function/SumFunction.hpp"
 
 using namespace std;
-/**
-    * We calculate the latency as the difference between the result generation timestamp for a given `time_window` and `campaign_id`
-    * pair and the event timestamp of the latest record generated that belongs to that bucket.
- **/
 
-ReasonAIR::ReasonAIR(unsigned long throughput) :
+MapReduce::MapReduce() :
 		Dataflow() {
-	// cout<<"My new ReasonAIR CLASS"<<endl;
-	generator = new OWLEventGenerator(1, rank, worldSize, throughput); 
-	filter = new Reasoner(2, rank, worldSize);
-	
-	
-	// join = new SHJoin(3, rank, worldSize);
-	//par_aggregate = new PartialAggregator(4, rank, worldSize);
-	//full_aggregate = new FullAggregator(5, rank, worldSize);
-	//collector = new EventCollector(6, rank, worldSize);
 
-// add(generator);
-	addLink(generator, filter);
-	// addLink(filter, join);
-	//addLink(join, par_aggregate);
-	//addLink(par_aggregate, full_aggregate);
-	//addLink(full_aggregate, collector);
-	
+	connector = new BinConnector("../data/INT_64MB.bin", 0, rank, worldSize);
+	mapper = new Map(new SquareFunction(), 1, rank, worldSize);
+	reducer = new Reduce(new SumFunction(), 2, rank, worldSize);
 
-	generator->initialize();
-	filter->initialize();
-	//join->initialize();
-	//par_aggregate->initialize();
-	//full_aggregate->initialize();
-	//collector->initialize();
-	
+	// Simple chain
+	addLink(connector, mapper);
+	addLink(mapper, reducer);
 
+	connector->initialize();
+	mapper->initialize();
+	reducer->initialize();
 }
 
-ReasonAIR::~ReasonAIR() {
-
-	delete generator;
-	delete filter;
-	//delete join;
-	//delete par_aggregate;
-	//delete full_aggregate;
-	//delete collector;
+MapReduce::~MapReduce() {
+	delete connector;
+	delete mapper;
+	delete reducer;
 }
-

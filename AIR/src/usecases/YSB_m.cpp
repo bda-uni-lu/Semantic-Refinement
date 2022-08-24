@@ -25,66 +25,73 @@
  **/
 
 /*
- * ReasonAIR.cpp
+ * YSB_m.cpp  MODIFIED-YSB
  *
- *  Created on: July 23, 2018
- *      Author: martin.theobald, vinu.venugopal
+ *  Created on: Feb 11, 2019
+ *      Author: vinu.venugopal
  */
 
-#include "ReasonAIR.hpp"
+#include "YSB_m.hpp"
 
 #include "../yahoo/EventCollector.hpp"
-#include "../yahoo/EventFilter.hpp"
-#include "../yahoo/Reasoner.hpp"
+#include "../yahoo_m/EventFilter_m.hpp"
 #include "../yahoo/EventGenerator.hpp"
-#include "../yahoo/OWLEventGenerator.hpp"
-#include "../yahoo/FullAggregator.hpp"
+#include "../yahoo_m/FullAggregator_m.hpp"
+#include "../yahoo_m/WinJoinYSB_m.hpp"
 #include "../yahoo/PartialAggregator.hpp"
 #include "../yahoo/SHJoin.hpp"
 
 using namespace std;
-/**
-    * We calculate the latency as the difference between the result generation timestamp for a given `time_window` and `campaign_id`
-    * pair and the event timestamp of the latest record generated that belongs to that bucket.
- **/
 
-ReasonAIR::ReasonAIR(unsigned long throughput) :
+YSB_m::YSB_m(unsigned long throughput) :
 		Dataflow() {
-	// cout<<"My new ReasonAIR CLASS"<<endl;
-	generator = new OWLEventGenerator(1, rank, worldSize, throughput); 
-	filter = new Reasoner(2, rank, worldSize);
-	
-	
-	// join = new SHJoin(3, rank, worldSize);
-	//par_aggregate = new PartialAggregator(4, rank, worldSize);
-	//full_aggregate = new FullAggregator(5, rank, worldSize);
-	//collector = new EventCollector(6, rank, worldSize);
 
-// add(generator);
+	generator = new EventGenerator(1, rank, worldSize, throughput);
+	filter = new EventFilterM(2, rank, worldSize);
+	joinClick = new SHJoin(3, rank, worldSize);
+	joinView = new SHJoin(4, rank, worldSize);
+	par_aggregateClick = new PartialAggregator(5, rank, worldSize);
+	par_aggregateView = new PartialAggregator(6, rank, worldSize);
+	full_aggregateClick = new FullAggregatorM(7, rank, worldSize, 1); //last argument denotes event_type click=1 and view=2
+	full_aggregateView = new FullAggregatorM(8, rank, worldSize, 2);
+	ratioFinder = new WinJoinYSBM(9, rank, worldSize);
+//	collector = new EventCollector(6, rank, worldSize);
+
 	addLink(generator, filter);
-	// addLink(filter, join);
-	//addLink(join, par_aggregate);
-	//addLink(par_aggregate, full_aggregate);
-	//addLink(full_aggregate, collector);
-	
+	addLink(filter, joinClick);
+	addLink(filter, joinView);
+	addLink(joinClick, par_aggregateClick);
+	addLink(joinView, par_aggregateView);
+	addLink(par_aggregateClick, full_aggregateClick);
+	addLink(par_aggregateView, full_aggregateView);
+	addLink(full_aggregateView, ratioFinder);
+	addLink(full_aggregateClick, ratioFinder);
+//	addLink(full_aggregate, collector);
 
 	generator->initialize();
 	filter->initialize();
-	//join->initialize();
-	//par_aggregate->initialize();
-	//full_aggregate->initialize();
-	//collector->initialize();
-	
+	joinClick->initialize();
+	joinView->initialize();
+	par_aggregateClick->initialize();
+	par_aggregateView->initialize();
+	full_aggregateClick->initialize();
+	full_aggregateView->initialize();
+	ratioFinder->initialize();
+//	collector->initialize();
 
 }
 
-ReasonAIR::~ReasonAIR() {
+YSB_m::~YSB_m() {
 
 	delete generator;
 	delete filter;
-	//delete join;
-	//delete par_aggregate;
-	//delete full_aggregate;
-	//delete collector;
+	delete joinClick;
+	delete joinView;
+	delete full_aggregateClick;
+	delete full_aggregateView;
+	delete ratioFinder;
+//	delete full_aggregate;
+//	delete collector;
+
 }
 

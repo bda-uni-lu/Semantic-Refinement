@@ -25,19 +25,17 @@
  **/
 
 /*
- * ReasonAIR.cpp
+ * YSB.cpp
  *
  *  Created on: July 23, 2018
  *      Author: martin.theobald, vinu.venugopal
  */
 
-#include "ReasonAIR.hpp"
+#include "YSB.hpp"
 
 #include "../yahoo/EventCollector.hpp"
 #include "../yahoo/EventFilter.hpp"
-#include "../yahoo/Reasoner.hpp"
 #include "../yahoo/EventGenerator.hpp"
-#include "../yahoo/OWLEventGenerator.hpp"
 #include "../yahoo/FullAggregator.hpp"
 #include "../yahoo/PartialAggregator.hpp"
 #include "../yahoo/SHJoin.hpp"
@@ -48,43 +46,37 @@ using namespace std;
     * pair and the event timestamp of the latest record generated that belongs to that bucket.
  **/
 
-ReasonAIR::ReasonAIR(unsigned long throughput) :
+YSB::YSB(unsigned long throughput) :
 		Dataflow() {
-	// cout<<"My new ReasonAIR CLASS"<<endl;
-	generator = new OWLEventGenerator(1, rank, worldSize, throughput); 
-	filter = new Reasoner(2, rank, worldSize);
-	
-	
-	// join = new SHJoin(3, rank, worldSize);
-	//par_aggregate = new PartialAggregator(4, rank, worldSize);
-	//full_aggregate = new FullAggregator(5, rank, worldSize);
-	//collector = new EventCollector(6, rank, worldSize);
 
-// add(generator);
+	generator = new EventGenerator(1, rank, worldSize, throughput);
+	filter = new EventFilter(2, rank, worldSize);
+	join = new SHJoin(3, rank, worldSize);
+	par_aggregate = new PartialAggregator(4, rank, worldSize);
+	full_aggregate = new FullAggregator(5, rank, worldSize);
+	collector = new EventCollector(6, rank, worldSize);
+
 	addLink(generator, filter);
-	// addLink(filter, join);
-	//addLink(join, par_aggregate);
-	//addLink(par_aggregate, full_aggregate);
-	//addLink(full_aggregate, collector);
-	
+	addLink(filter, join);
+	addLink(join, par_aggregate);
+	addLink(par_aggregate, full_aggregate);
+	addLink(full_aggregate, collector);
 
 	generator->initialize();
 	filter->initialize();
-	//join->initialize();
-	//par_aggregate->initialize();
-	//full_aggregate->initialize();
-	//collector->initialize();
-	
-
+	join->initialize();
+	par_aggregate->initialize();
+	full_aggregate->initialize();
+	collector->initialize();
 }
 
-ReasonAIR::~ReasonAIR() {
+YSB::~YSB() {
 
 	delete generator;
 	delete filter;
-	//delete join;
-	//delete par_aggregate;
-	//delete full_aggregate;
-	//delete collector;
+	delete join;
+	delete par_aggregate;
+	delete full_aggregate;
+	delete collector;
 }
 
