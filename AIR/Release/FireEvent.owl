@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#"
+     xml:base="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-8="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasContext -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasContext"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasEvent"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservationResult -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservationResult">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#TemperatureEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#TemperatureEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Elevator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Elevator"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ElevatorAbnormalTemperatureEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ElevatorAbnormalTemperatureEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Elevator"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservationResult"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ElevatorFireEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ElevatorFireEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Elevator"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Event"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasEvent"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasEvent"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokeDetectionEvent"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Office -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Office"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#OfficeAbnormalTemperatureEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#OfficeAbnormalTemperatureEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Office"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservationResult"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#OfficeFireEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#OfficeFireEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Office"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerAbnormalTemperatureEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerAbnormalTemperatureEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservationResult"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove20"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#AbnormalTemperatureEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoom"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoomFireEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoomFireEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasLocation"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoom"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Smoke -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Smoke"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokeDetectionEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokeDetectionEvent">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasContext"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokePpty"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokePpty -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#SmokePpty">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Smoke"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#TemperatureEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#TemperatureEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#hasObservedProperty"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove20 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove20">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove20"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#abnormal_temp_event -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#abnormal_temp_event">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#TemperatureEvent"/>
+        <hasObservedProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#45F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001er"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#40F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001er -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001er">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Elevator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001f -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001f">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001er001er"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#50F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001of"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#50F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001f -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001f">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001of"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#40F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001of -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001of001of">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Office"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001x -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001x">
+        <hasContext rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001y"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001y -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001y">
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001z"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001z -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001z">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Smoke"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001sr"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#30F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001f -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001f">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#FireEvent"/>
+        <hasLocation rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001sr"/>
+        <hasObservationResult rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#30F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001sr -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001sr001sr">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ServerRoom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#fire_event -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#fire_event">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+        <hasEvent rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#abnormal_temp_event"/>
+        <hasEvent rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#b00001f001r001x"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#temperature_event -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#temperature_event">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Observation"/>
+        <hasObservedProperty rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#35F"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#30F -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#30F">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove20"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#35F -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#35F">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#40F -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#40F">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#45F -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#45F">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#50F -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#50F">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#Temperature"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rubaiya/ontologies/2021/8/untitled-ontology-8#ValueAbove40"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
